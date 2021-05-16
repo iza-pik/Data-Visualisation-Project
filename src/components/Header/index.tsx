@@ -17,11 +17,7 @@ export const HeaderWrapper = styled.header`
 `;
 
 const Header: React.FC<iHeader> = () => {
-  return (
-    <>
-      <HeaderWrapper>Data visualisation tool</HeaderWrapper>
-    </>
-  );
+  return <HeaderWrapper>Data visualisation tool</HeaderWrapper>;
 };
 
 export default Header;

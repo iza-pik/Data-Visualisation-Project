@@ -20,10 +20,10 @@ const App: React.FC<{}> = () => {
       zoomType: "x",
     },
     title: {
-      text: "AAPL stock price by minute",
+      text: "Stock prices change since 2010",
     },
     subtitle: {
-      text: "Using explicit breaks for nights and weekends",
+      text: "Click on the stock tickers to visualise and compare each or all of them at once.",
     },
     tooltip: {
       backgroundColor: "rgba(169, 222, 183, 0.75)",
@@ -54,7 +54,7 @@ const App: React.FC<{}> = () => {
         },
         stops: [
           [0, `rgb(${getStockColour(ticker)})`],
-          [1, `rgba(${getStockColour(ticker)}, 0.1`],
+          [1, `rgba(${getStockColour(ticker)}, 0.1)`],
         ],
       },
       lineWidth: 0.75,
