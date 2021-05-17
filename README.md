@@ -1,3 +1,15 @@
+**_ CODE COMMENTARY _**
+
+For this data visualisation exercise I decided to use Yahoo Finance API, from which I extracted stock data in .json format. I haven't fetched the data directly from the API or the ONS website suggested due to a CORS error, which could have been bypassed by using a proxy but for simplicity I decided not to do that.
+
+The data object was mapped to the app which is using Highcharts (I considered it a good option for straightforward data visualisation) to display all 6 objects in one chart. The options and colours have been customised and unit tests have been written while creating the functions to test them.
+
+I used Typescript in React, with Highcharts and Styled components libraries.
+
+The app could be further expanded to include different types of charts, different data endpoints, connect to a database etc.
+
+**_ END _**
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
