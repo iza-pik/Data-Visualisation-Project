@@ -1,8 +1,11 @@
-export const stockParser = (stockData: any, ticker: string) =>
-  (stockData[ticker] || []).map((d: any) => [
+import { iStockData, iStockInfo, tickerType } from "../constants";
+
+export const stockParser = (
+  stockData: iStockData,
+  ticker: tickerType,
+  value: keyof iStockInfo = "open"
+) =>
+  (stockData[ticker] || []).map((d: iStockInfo) => [
     new Date(d.date),
-    d.open,
-    d.high,
-    d.low,
-    d.close,
+    d[value],
   ]);

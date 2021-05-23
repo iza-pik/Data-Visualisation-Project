@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import Header from "./components/Header/";
 import styled from "styled-components";
 import stockData from "./constants/stockData.json";
 import { getStockColour, stockParser } from "./utils";
+import { iStockInfo, tickerType } from "./constants";
 
 export const AppWrapper = styled.div`
   text-align: center;
@@ -12,9 +13,16 @@ export const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-const tickers = Object.keys(stockData);
+const tickers = Object.keys(stockData) as tickerType[];
 
 const App: React.FC<{}> = () => {
+  const [value, setValue] = useState<keyof iStockInfo>("open");
+  const onChangeStockInfo = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setValue(event.target.id as keyof iStockInfo);
+  };
+
   const options = {
     chart: {
       zoomType: "x",
@@ -39,7 +47,7 @@ const App: React.FC<{}> = () => {
     series: tickers.map((ticker) => ({
       name: ticker,
       type: "area",
-      data: stockParser(stockData, ticker),
+      data: stockParser(stockData, ticker, value as keyof iStockInfo),
       gapSize: 5,
       tooltip: {
         valueDecimals: 2,
@@ -64,7 +72,7 @@ const App: React.FC<{}> = () => {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header value={value} onChange={onChangeStockInfo} />
       <HighchartsReact highcharts={Highcharts} options={options} />
     </AppWrapper>
   );

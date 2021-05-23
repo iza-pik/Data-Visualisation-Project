@@ -1,6 +1,6 @@
-import { iTicker, stocks } from "../constants";
+import { tickerType, stocks } from "../constants";
 
 export const defaultColour = "200, 100, 150";
 
-export const getStockColour = (ticker: string): string =>
-  stocks[ticker as iTicker]?.colour || defaultColour;
+export const getStockColour = (ticker: tickerType): string =>
+  stocks[ticker]?.colour || defaultColour;
